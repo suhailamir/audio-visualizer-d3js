@@ -1,0 +1,11 @@
+{
+  "vendor": {
+    "js": "/audio-visualizer-d3js/vendor.bundle.js"
+  },
+  "main": {
+    "js": "/audio-visualizer-d3js/main.bundle.js"
+  },
+  "polyfills": {
+    "js": "/audio-visualizer-d3js/polyfills.bundle.js"
+  }
+}
