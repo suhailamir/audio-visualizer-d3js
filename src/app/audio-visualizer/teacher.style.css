@@ -1,0 +1,40 @@
+        /*video {
+            object-fit: fill;
+            width: 30%;
+        }
+        
+        button,
+        input,
+        select {
+            font-weight: normal;
+            padding: 2px 4px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }*/
+        
+        .teacherCard {
+            margin-top: 35px;
+        }
+        /*.teacherVideo {
+            height: 250px;
+            width: 450px
+        }
+        
+        .studentVideo {
+            height: 150px;
+            width: 250px
+        }*/
+        
+        video {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }

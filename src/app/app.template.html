@@ -1,0 +1,56 @@
+<div class="navbar-fixed">
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo hide-on-med-and-down">Audio Visualizer</a>
+            <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+            <ul class="right">
+                <!-- <li> <a [routerLink]="['./teacher']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    Teacher
+                    </a></li>
+                <li><a [routerLink]="['./student']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                Student
+                </a></li> -->
+                <li><a [routerLink]="['./audio-visualizer']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    Audio Visualizer
+                    </a></li>
+
+            </ul>
+            <!--<ul class="side-nav" id="mobile-demo">
+                <li> <a [routerLink]="['./teacher']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    Teacher
+                    </a></li>
+                <li><a [routerLink]="['./student']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    Student
+                    </a></li>
+            </ul>-->
+        </div>
+    </nav>
+</div>
+<!--<main>-->
+<div class="container">
+    <!-- Page Content goes here -->
+    <router-outlet></router-outlet>
+</div>
+
+<!--</main>-->
+<footer>
+</footer>
+
+<!--
+
+template: `
+<nav>
+    <a [routerLink]="['./teacher']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+  Teacher
+  </a>
+    <a [routerLink]="['./student']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+  Student
+  </a>
+</nav>
+<main>
+    <router-outlet></router-outlet>
+</main>
+<footer>
+</footer>
+`-->

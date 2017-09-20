@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col s12 m12">
+
+        <div class="card-panel ">
+            <span *ngIf="classStarted;">  Please share this ID with your students to Join the class :<b>{{uuid}}</b>
+                 </span>
+            <br>
+            <br>
+            <span *ngIf="classStarted;">Screen sharing is only available for Chrome for now, you need to install <a href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk" target="_blank">this</a> Chrome extension to enable it.</span>
+            <a class="waves-effect waves-light btn" id="open-room" (click)="startClass()" *ngIf="!classStarted || !localVideo;">Start Class</a>
+
+        </div>
+    </div>
+</div>
+
+<div id="chat-container">
+    <div id="file-container"></div>
+    <div class="chat-output"></div>
+</div>
+<div class="row" *ngIf="localVideo;">
+    <div class="col s12 m12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Teacher</span>
+            </div>
+            <div class="card-content">
+                <video controls #localStream [src]="localVideo" autoplay muted="true" class="teacherVideo"> </video>
+            </div>
+
+
+            <div class="card-action">
+                <button class="waves-effect waves-teal btn-flat light-blue lighten-2" (click)="shareScreen()">Share Screen</button>
+                <button class="waves-effect waves-teal btn-flat red accent-3" (click)="endClass()">End Class</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m5">
+        <span class="white-text">Students </span>
+
+        <div class="card-panel teal" *ngFor="let stream of students">
+
+            <video id="video-qdw81w4k9zc" controls #localStream [src]="stream.src" autoplay class="studentVideo" style="border:20px;"></video>
+
+        </div>
+    </div>
+</div>

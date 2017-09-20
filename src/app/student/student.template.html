@@ -1,0 +1,105 @@
+<section class="experiment">
+    <!--<md-card class="teacherCard">
+        <md-card-title>Welcome to Class</md-card-title>
+    </md-card>-->
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card-panel teal">
+                <span class="white-text card-title">Welcome to Class   </span>
+            </div>
+        </div>
+    </div>
+    <!--<md-card class="teacherCard">
+        <button id="join-room" md-button (click)="joinRoom()">Join Class</button>
+    </md-card>-->
+    <!--<div class="make-center">
+        <input type="text" id="room-id" value="abcdef">
+        <button id="open-room" md-button (click)="openRoom()">Open Room</button>
+        <button id="join-room" (click)="joinRoom()">Join Room</button>
+       
+
+        <br><br>
+        <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
+        <button id="share-file" disabled (click)="toggleImage()">Share File</button>
+        <br><br>
+        <button id="btn-leave-room" disabled (click)="toggleImage()">Leave /or close the room</button>
+
+        <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+    </div>-->
+
+    <div id="chat-container">
+        <div id="file-container"></div>
+        <div class="chat-output"></div>
+    </div>
+
+
+
+
+    <div class="row" *ngIf="!teacherVideo;">
+        <div class="col s12 m12">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Class</span>
+                    <div class="row">
+                        <div class="input-field col s6 m12">
+                            <input placeholder="Class ID" #newClassID (keyup.enter)="joinClass(newClassID.value)" (blur)="joinClass(newClassID.value); newClassID.value='' " id="class_id" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6 m12">
+                            <a class="waves-effect waves-light btn" (click)="joinClass(newClassID.value)" disabled="!newClassID.value">Join Class</a>
+                        </div>
+
+                    </div>
+                </div>
+                <!--<div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row" class="teacherCard" *ngIf="localVideo;">
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text" *ngIf="teacherVideo;">
+                    <span class="card-title">Teacher</span>
+                    <video controls #teacherStream [src]="teacherVideo" autoplay class="studentVideo"> </video>
+                </div>
+                <div class="card-content white-text" *ngIf="localVideo;">
+                    <span class="card-title">You</span>
+                    <video controls #localStream [src]="localVideo" autoplay muted="true" class="studentVideo">
+                    </video>
+                </div>
+                <!--<div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row" class="teacherCard" *ngIf="students.length>0;">
+        <div class="col s12 m12">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Classmates</span>
+                    <div class="row">
+                        <div class="col s12 m4 l4" *ngFor="let stream of students">
+                            <video controls #localStream [src]="stream.src" autoplay class="studentVideo">
+                         </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>-->
+        </div>
+    </div>
+
+
+
+
+</section>
