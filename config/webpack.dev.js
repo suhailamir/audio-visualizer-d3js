@@ -30,7 +30,6 @@ const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
     HMR: HMR
 });
 
-
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 /**
@@ -87,14 +86,15 @@ module.exports = function(options) {
             chunkFilename: '[id].chunk.js',
 
             library: 'ac_[name]',
-            libraryTarget: 'var',
+            libraryTarget: 'var'
         },
 
         module: {
 
-            rules: [
-                { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
-                {
+            rules: [{
+                    test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+                    loader: 'url-loader?limit=100000'
+                }, {
                     test: /\.ts$/,
                     use: [{
                         loader: 'tslint-loader',
@@ -112,7 +112,9 @@ module.exports = function(options) {
                  */
                 {
                     test: /\.css$/,
-                    use: ['style-loader', 'css-loader'],
+                    use: [
+                        'style-loader', 'css-loader'
+                    ],
                     include: [helpers.root('src', 'styles')]
                 },
 
@@ -123,20 +125,18 @@ module.exports = function(options) {
                  */
                 {
                     test: /\.scss$/,
-                    use: ['style-loader', 'css-loader', 'sass-loader'],
+                    use: [
+                        'style-loader', 'css-loader', 'sass-loader'
+                    ],
                     include: [helpers.root('src', 'styles')]
-                },
-
+                }
             ]
 
         },
 
         plugins: [
 
-            new ProvidePlugin({
-                "window.jQuery": "jquery",
-                Hammer: "hammerjs/hammer",
-            }),
+            new ProvidePlugin({ "window.jQuery": "jquery", Hammer: "hammerjs/hammer" }),
 
             /**
              * Plugin: DefinePlugin
@@ -147,29 +147,28 @@ module.exports = function(options) {
              *
              * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
              */
-            // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
+            // NOTE: when adding more properties, make sure you include them in
+            // custom-typings.d.ts
             new DefinePlugin({
                 'ENV': JSON.stringify(METADATA.ENV),
                 'HMR': METADATA.HMR,
                 'process.env': {
                     'ENV': JSON.stringify(METADATA.ENV),
                     'NODE_ENV': JSON.stringify(METADATA.ENV),
-                    'HMR': METADATA.HMR,
+                    'HMR': METADATA.HMR
                 }
             }),
 
             new DllBundlesPlugin({
                 bundles: {
                     polyfills: [
-                        'core-js',
-                        {
+                        'core-js', {
                             name: 'zone.js',
                             path: 'zone.js/dist/zone.js'
-                        },
-                        {
+                        }, {
                             name: 'zone.js',
                             path: 'zone.js/dist/long-stack-trace-zone.js'
-                        },
+                        }
                     ],
                     vendor: [
                         '@angular/platform-browser',
@@ -180,7 +179,7 @@ module.exports = function(options) {
                         '@angular/http',
                         '@angular/router',
                         '@angularclass/hmr',
-                        'rxjs',
+                        'rxjs'
                     ]
                 },
                 dllDir: helpers.root('dll'),
@@ -198,10 +197,11 @@ module.exports = function(options) {
              *
              * See: https://github.com/SimenB/add-asset-html-webpack-plugin
              */
-            new AddAssetHtmlPlugin([
-                { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
-                { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
-            ]),
+            new AddAssetHtmlPlugin([{
+                filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`)
+            }, {
+                filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`)
+            }]),
 
             /**
              * Plugin: NamedModulesPlugin (experimental)
@@ -216,13 +216,7 @@ module.exports = function(options) {
              *
              * See: https://gist.github.com/sokra/27b24881210b56bbaff7
              */
-            new LoaderOptionsPlugin({
-                debug: true,
-                options: {
-
-                }
-            }),
-
+            new LoaderOptionsPlugin({ debug: true, options: {} })
         ],
 
         /**
